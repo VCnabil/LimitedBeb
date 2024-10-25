@@ -1,0 +1,47 @@
+{
+  "configurations": [
+    {
+      "name": "SimulatorDebug",
+      "configurationType": "Debug",
+      "inheritEnvironments": [ "msvc_x86" ],
+      "buildRoot": "${thisFileDir}\\Debug\\Win32",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DSIMULATOR_DEBUG:BOOL=ON",
+      "buildCommandArgs": "-v:n -clp:NoSummary",
+      "ctestCommandArgs": "",
+      "generator": "Visual Studio 17 2022"
+    },
+    {
+      "name": "SimulatorRelease",
+      "configurationType": "Release",
+      "inheritEnvironments": [ "msvc_x86" ],
+      "buildRoot": "${thisFileDir}\\Release\\Win32",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DSIMULATOR_RELEASE:BOOL=ON",
+      "buildCommandArgs": "-v:n -clp:NoSummary",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "TargetDebug",
+      "generator": "Unix Makefiles",
+      "configurationType": "Debug",
+      "buildRoot": "${thisFileDir}\\Debug\\Linux",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "inheritEnvironments": [ "linux_arm" ],
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${thisFileDir}\\..\\..\\CMake\\cygwin_toolchain_imx28.cmake  -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON",
+      "buildCommandArgs": "-j${env.NUMBER_OF_PROCESSORS}",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "TargetRelease(ThenPackage)",
+      "generator": "Unix Makefiles",
+      "configurationType": "Release",
+      "buildRoot": "${thisFileDir}\\Release\\Linux",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "inheritEnvironments": [ "linux_arm" ],
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${thisFileDir}\\..\\..\\CMake\\cygwin_toolchain_imx28.cmake  -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON -DCREATE_USB_PACKAGE=1",
+      "buildCommandArgs": "-j${env.NUMBER_OF_PROCESSORS}",
+      "ctestCommandArgs": ""
+    }
+  ]
+}
