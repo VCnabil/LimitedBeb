@@ -19,7 +19,8 @@
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
       "cmakeCommandArgs": "-DSIMULATOR_RELEASE:BOOL=ON",
       "buildCommandArgs": "-v:n -clp:NoSummary",
-      "ctestCommandArgs": ""
+      "ctestCommandArgs": "",
+      "generator": "Visual Studio 17 2022"
     },
     {
       "name": "TargetDebug",
